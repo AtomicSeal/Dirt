@@ -4,8 +4,11 @@ public class Dirt {
     public static void main(String[] args){
         Projektor projektor = new Projektor();
         Scanner input=new Scanner(System.in);
+
         projektor.loadTaskList();
+
         Boolean working =true;
+
         while(working){
             System.out.print("\033[H\033[2J");
             projektor.taskListProject("Dirt","taskList");

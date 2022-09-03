@@ -20,8 +20,6 @@ public class Projektor {
             myTaskdes = (TaskList) in.readObject();
             in.close();
             fileIn.close();
-            System.out.println("Elo mordo załadowane");
-            myTaskdes.printList();
             myTaskList=myTaskdes;
         }
         catch (Exception e) {
@@ -47,17 +45,8 @@ public class Projektor {
         myTaskList.addToList(myTask);
 
         myFooter.displayFooter(footer);
-        try {
-            FileOutputStream fileOut = new FileOutputStream("serialListy.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(myTaskList);
-            out.close();
-            fileOut.close();
-            System.out.println("Elo mordo zapisane");
-        }
-        catch (Exception e) {
-            System.out.println("Niepoprawny parametr, rozmiar tablicy to:");
-        }
+        serializationMethod(myTaskList);
+
 
     }
     public void taskListProject(String title,String footer){
@@ -87,6 +76,7 @@ public class Projektor {
         String comment = input.nextLine();
         myTaskList.lista.get(x).addComment(comment);
         myFooter.displayFooter(footer);
+        serializationMethod(myTaskList);
     }
     public void openTaskProject(String title,String footer){
         myHeader.printTitle(title);
@@ -99,6 +89,18 @@ public class Projektor {
         System.out.println();
         System.out.println("press anything to continue");
         input.nextLine();
+    }
+    public void serializationMethod(TaskList lista){
+        try {
+            FileOutputStream fileOut = new FileOutputStream("serialListy.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(lista);
+            out.close();
+            fileOut.close();
+        }
+        catch (Exception e) {
+            System.out.println("Niepoprawny parametr, rozmiar tablicy to:");
+        }
     }
 
 }
