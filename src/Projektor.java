@@ -15,7 +15,7 @@ public class Projektor {
     TaskList myTaskdes=null;
     public void loadTaskList(){
         try {
-            FileInputStream fileIn = new FileInputStream("/home/foka/Disk1/Programowanko/Java/DirtRelated/Dirt/serialListy.ser");
+            FileInputStream fileIn = new FileInputStream("serialListy.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             myTaskdes = (TaskList) in.readObject();
             in.close();
