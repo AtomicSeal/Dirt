@@ -1,7 +1,10 @@
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskList {
+public class TaskList implements Serializable {
     List<Task> lista = new ArrayList<Task>();
     public void addToList(Task taskToBeAdded){
         lista.add(taskToBeAdded);
@@ -13,6 +16,9 @@ public class TaskList {
 
         }
 
+    }
+    public int returnSize(){
+        return lista.size();
     }
 
 

@@ -1,14 +1,39 @@
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class Projektor {
+
+    static int counter;
     Header myHeader = new Header();
     Footer myFooter = new Footer();
     Scanner input=new Scanner(System.in);
     TaskList myTaskList = new TaskList();
 
+    TaskList myTaskdes=null;
+    public void loadTaskList(){
+        try {
+            FileInputStream fileIn = new FileInputStream("/home/foka/Disk1/Programowanko/Java/DirtRelated/Dirt/serialListy.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            myTaskdes = (TaskList) in.readObject();
+            in.close();
+            fileIn.close();
+            System.out.println("Elo mordo załadowane");
+            myTaskdes.printList();
+            myTaskList=myTaskdes;
+        }
+        catch (Exception e) {
+            System.out.println("Niepoprawny parametr, rozmiar tablicy to:");
+        }
+
+
+    }
+
     public void newTaskProject(String title,String footer){
 
-
+        counter =myTaskList.returnSize();
         myHeader.printTitle(title);
         System.out.println();
 
@@ -17,11 +42,23 @@ public class Projektor {
         System.out.println("Enter description of your task");
         String inputTwo= input.nextLine();
 
-        Task myTask=new Task(inputOne,inputTwo);
+        Task myTask=new Task(counter,inputOne,inputTwo);
 
         myTaskList.addToList(myTask);
 
         myFooter.displayFooter(footer);
+        try {
+            FileOutputStream fileOut = new FileOutputStream("serialListy.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(myTaskList);
+            out.close();
+            fileOut.close();
+            System.out.println("Elo mordo zapisane");
+        }
+        catch (Exception e) {
+            System.out.println("Niepoprawny parametr, rozmiar tablicy to:");
+        }
+
     }
     public void taskListProject(String title,String footer){
 

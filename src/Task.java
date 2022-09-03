@@ -1,17 +1,17 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Task {
+public class Task implements Serializable {
     static int counter;
     String taskTitle;
     String taskDescrition;
     int taskId;
     List comments = new ArrayList();
-    public Task(String Title,String Description){
+    public Task(int counter, String Title,String Description){
         taskTitle=Title;
         taskDescrition=Description;
         taskId=counter;
-        counter++;
     }
     public void addComment(String comment){
         comments.add(comment);

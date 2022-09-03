@@ -4,7 +4,9 @@ public class Dirt {
     public static void main(String[] args){
         Projektor projektor = new Projektor();
         Scanner input=new Scanner(System.in);
-        while(true){
+        projektor.loadTaskList();
+        Boolean working =true;
+        while(working){
             System.out.print("\033[H\033[2J");
             projektor.taskListProject("Dirt","taskList");
             System.out.println("\033[?25l");
@@ -23,6 +25,8 @@ public class Dirt {
                 case "o":
                     projektor.openTaskProject("Commenting", "commenting");
                     break;
+                case "q":
+                    working =false;
 
             }
 
