@@ -64,7 +64,7 @@ public class Projektor {
 
         myHeader.printTitle(title);
         myTaskList.printList();
-        System.out.println("Chose task you would like to add comment to");
+        System.out.println("Chose task you would like to edit");
 
         myFooter.displayFooter(footer);
 
@@ -72,9 +72,20 @@ public class Projektor {
         System.out.print("\033[H\033[2J");
         myHeader.printTitle(myTaskList.lista.get(x).taskTitle);
 
-        System.out.println("Enter you comment");
-        String comment = input.nextLine();
-        myTaskList.lista.get(x).addComment(comment);
+        System.out.println("what would you like to do?");
+        String userInput = input.nextLine();
+        switch (userInput){
+            case "a":
+                System.out.println("Enter your comment below");
+                String comment = input.nextLine();
+                myTaskList.lista.get(x).addComment(comment);
+                break;
+            case "b":
+                System.out.println("Which state would you like to switch task to");
+
+
+        }
+
         myFooter.displayFooter(footer);
         serializationMethod(myTaskList);
     }
@@ -102,5 +113,21 @@ public class Projektor {
             System.out.println("Niepoprawny parametr, rozmiar tablicy to:");
         }
     }
+    public void deleteTaskFromList(){
+        try{
+            int taskToRemove = Integer.parseInt(input.nextLine());
+            myTaskList.lista.remove(taskToRemove);
+            for(int i=0;i<myTaskList.lista.size();i++){
+                myTaskList.lista.get(i).taskId=i;
 
+            }
+            serializationMethod(myTaskList);
+        }
+        catch (Exception e) {
+            System.out.println("Enter integer please");
+        }
+
+
+
+    }
 }

@@ -21,7 +21,7 @@ public class Dirt {
                     projektor.newTaskProject("New Task","taskCreation");
                     break;
 
-                case "e":
+                case "c":
                     projektor.addCommentProject("Commenting", "commenting");
                     break;
 
@@ -30,6 +30,12 @@ public class Dirt {
                     break;
                 case "q":
                     working =false;
+                    break;
+                case "d":
+                    projektor.deleteTaskFromList();
+                    break;
+
+
 
             }
 
