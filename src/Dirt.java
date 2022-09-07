@@ -6,12 +6,18 @@ public class Dirt {
         Scanner input=new Scanner(System.in);
 
         projektor.loadTaskList();
-        System.out.println(System.getProperty("os.name"));
+        String os=System.getProperty("os.name");
 
         Boolean working =true;
 
         while(working){
-            System.out.print("\033[H\033[2J");
+            if (os.equals("Linux")){
+                System.out.print("\033[H\033[2J");
+            }
+            else{
+                System.out.print("\033\143");
+                System.out.flush();
+            }
             projektor.taskListProject("Dirt","taskList");
             System.out.println("\033[?25l");
 
