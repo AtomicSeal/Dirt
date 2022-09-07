@@ -81,7 +81,11 @@ public class Projektor {
                 break;
             case "s":
                 System.out.println("Which state would you like to switch task to");
-
+                System.out.println("a for In progress");
+                System.out.println("b for closed");
+                myTaskList.lista.get(x).switchTaskState(input.nextLine());
+            default:
+                System.out.println("Please chose valid option");
 
         }
 

@@ -6,6 +6,7 @@ public class Dirt {
         Scanner input=new Scanner(System.in);
 
         projektor.loadTaskList();
+        System.out.println(System.getProperty("os.name"));
 
         Boolean working =true;
 
