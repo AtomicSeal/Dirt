@@ -21,8 +21,8 @@ public class Dirt {
                     projektor.newTaskProject("New Task","taskCreation");
                     break;
 
-                case "c":
-                    projektor.addCommentProject("Commenting", "commenting");
+                case "e":
+                    projektor.editTask("Commenting", "editTask");
                     break;
 
                 case "o":

@@ -59,20 +59,19 @@ public class Projektor {
         myFooter.displayFooter("taskList");
 
     }
-    public void addCommentProject(String title,String footer){
+    public void editTask(String title,String footer){
 
 
         myHeader.printTitle(title);
         myTaskList.printList();
         System.out.println("Chose task you would like to edit");
 
-        myFooter.displayFooter(footer);
-
         int x=Integer.parseInt(input.nextLine());
         System.out.print("\033[H\033[2J");
         myHeader.printTitle(myTaskList.lista.get(x).taskTitle);
 
         System.out.println("what would you like to do?");
+        myFooter.displayFooter(footer);
         String userInput = input.nextLine();
         switch (userInput){
             case "a":
@@ -80,7 +79,7 @@ public class Projektor {
                 String comment = input.nextLine();
                 myTaskList.lista.get(x).addComment(comment);
                 break;
-            case "b":
+            case "s":
                 System.out.println("Which state would you like to switch task to");
 
 

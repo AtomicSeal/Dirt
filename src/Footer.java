@@ -8,10 +8,10 @@ public class Footer {
             case "taskCreation":
                 break;
             case "taskList":
-                System.out.println("a:new task   e:edit task   l:list tasks   o: open task");
+                System.out.println("a:new task   e:edit task   l:list tasks   o: open task  q: quit prgram  ");
                 break;
-            case "commenting":
-                System.out.println("b: back");
+            case "editTask":
+                System.out.println("a: addComment   s: Switch state");
 
         }
 
