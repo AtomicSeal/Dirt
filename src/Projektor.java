@@ -77,7 +77,9 @@ public class Projektor {
             case "a":
                 System.out.println("Enter your comment below");
                 String comment = input.nextLine();
-                myTaskList.lista.get(x).addComment(comment);
+                System.out.println("Chose type of comment");
+                String type = input.nextLine();
+                myTaskList.lista.get(x).addComment(comment,type);
                 break;
             case "s":
                 System.out.println("Which state would you like to switch task to");
