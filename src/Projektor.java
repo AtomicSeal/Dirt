@@ -79,13 +79,18 @@ public class Projektor {
                 String comment = input.nextLine();
                 System.out.println("Chose type of comment");
                 String type = input.nextLine();
-                myTaskList.lista.get(x).addComment(comment,type);
+                myTaskList.lista.get(x).addComment(comment,type,myTaskList.lista.get(x).comments.size());
                 break;
             case "s":
                 System.out.println("Which state would you like to switch task to");
                 System.out.println("a for In progress");
                 System.out.println("b for closed");
                 myTaskList.lista.get(x).switchTaskState(input.nextLine());
+            case "d":
+                myTaskList.lista.get(x).printTask();
+                System.out.println("which comment would you like to delete?");
+                int s=Integer.parseInt(input.nextLine());
+                myTaskList.lista.get(x).deleteComment(s);
             default:
                 System.out.println("Please chose valid option");
 

@@ -15,24 +15,32 @@ public class Task implements Serializable {
     String taskState;
     int taskId;
     List<Comment> comments = new ArrayList<Comment>();
+    LocalDate creationDate;
+    LocalTime creationTime;
     public Task(int counter, String Title,String Description){
         taskTitle=Title;
         taskDescrition=Description;
         taskId=counter;
         taskState="New";
-        LocalDate creationDate=LocalDate.now();
-        LocalTime creationTime = LocalTime.now();
+        creationDate=LocalDate.now();
+        creationTime = LocalTime.now();
 
     }
 
-    public void addComment(String comment,String type ){
-        Comment myComment = new Comment(comment,type);
+    public void addComment(String comment,String type,int id ){
+        Comment myComment = new Comment(comment,type,id);
         comments.add(myComment);
+    }
+    public void deleteComment(int toBeDeleted){
+        comments.remove(toBeDeleted);
+        for(int i=0;i<comments.size();i++){
+            comments.get(i).commentId=i;
+        }
     }
 
 
     public void printTaskTitles(){
-        System.out.println(taskId+" "+taskTitle+ " "+ taskState);
+        System.out.println(creationDate+" "+creationTime+" "+taskId+" "+taskTitle+ " "+ taskState);
 
     }
     public void printTask(){
