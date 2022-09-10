@@ -1,7 +1,4 @@
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.Scanner;
 
 public class Projektor {
@@ -29,23 +26,32 @@ public class Projektor {
 
     }
 
-    public void newTaskProject(String title,String footer){
+    public void newTaskProject(String title,String footer,String os){
 
         counter =myTaskList.returnSize();
         myHeader.printTitle(title);
         System.out.println();
 
         System.out.println("Enter name of your task");
-        String inputOne = input.nextLine();
-        System.out.println("Enter description of your task");
-        String inputTwo= input.nextLine();
-
-        Task myTask=new Task(counter,inputOne,inputTwo);
-
-        myTaskList.addToList(myTask);
-
         myFooter.displayFooter(footer);
-        serializationMethod(myTaskList);
+        System.out.println("\033[?25h");
+        String inputOne = input.nextLine();
+        switch (inputOne){
+            case "b":
+                break;
+            default:
+                System.out.println("Enter description of your task");
+                String inputTwo= input.nextLine();
+
+                Task myTask=new Task(counter,inputOne,inputTwo);
+
+                myTaskList.addToList(myTask);
+
+
+                serializationMethod(myTaskList);
+
+        }
+
 
 
     }
@@ -139,5 +145,22 @@ public class Projektor {
 
 
 
+    }
+    public void clearScreen(String os){
+        if (os.equals("Linux")){
+            System.out.print("\033[H\033[2J");
+        }
+        else{
+            System.out.print("\033\143");
+            System.out.flush();
+        }
+    }
+    public void hideCursor(String os){
+        if (os.equals("Linux")){
+            System.out.println("\033[?25l");
+        }
+        else{
+            System.out.println("\33[?25l");
+        }
     }
 }

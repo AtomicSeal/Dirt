@@ -11,21 +11,16 @@ public class Dirt {
         Boolean working =true;
 
         while(working){
-            if (os.equals("Linux")){
-                System.out.print("\033[H\033[2J");
-            }
-            else{
-                System.out.print("\033\143");
-                System.out.flush();
-            }
+            projektor.clearScreen(os);
             projektor.taskListProject("Dirt","taskList");
             System.out.println("\033[?25l");
 
             String userInput = input.nextLine();
             System.out.print("\033[H\033[2J");
+
             switch(userInput){
                 case "a":
-                    projektor.newTaskProject("New Task","taskCreation");
+                    projektor.newTaskProject("New Task","taskCreation",os);
                     break;
 
                 case "e":
@@ -36,6 +31,7 @@ public class Dirt {
                     projektor.openTaskProject("Commenting", "commenting");
                     break;
                 case "q":
+                    System.out.println("\033[?25h");
                     working =false;
                     break;
                 case "d":

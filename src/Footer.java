@@ -6,6 +6,7 @@ public class Footer {
                 System.out.println("a:new task   e:edit task   l:list tasks");
                 break;
             case "taskCreation":
+                System.out.println("b: back");
                 break;
             case "taskList":
                 System.out.println("a:new task   e:edit task   l:list tasks   o: open task  q: quit prgram  ");
