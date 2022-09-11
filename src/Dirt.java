@@ -6,12 +6,10 @@ public class Dirt {
         Scanner input=new Scanner(System.in);
 
         projektor.loadTaskList();
-        String os=System.getProperty("os.name");
 
         Boolean working =true;
 
         while(working){
-            projektor.clearScreen(os);
             projektor.taskListProject("Dirt","taskList");
             System.out.println("\033[?25l");
 
@@ -20,7 +18,7 @@ public class Dirt {
 
             switch(userInput){
                 case "a":
-                    projektor.newTaskProject("New Task","taskCreation",os);
+                    projektor.newTaskProject("New Task","taskCreation");
                     break;
 
                 case "e":

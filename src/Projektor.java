@@ -26,7 +26,7 @@ public class Projektor {
 
     }
 
-    public void newTaskProject(String title,String footer,String os){
+    public void newTaskProject(String title,String footer){
 
         counter =myTaskList.returnSize();
         myHeader.printTitle(title);
@@ -146,21 +146,11 @@ public class Projektor {
 
 
     }
-    public void clearScreen(String os){
-        if (os.equals("Linux")){
-            System.out.print("\033[H\033[2J");
-        }
-        else{
-            System.out.print("\033\143");
-            System.out.flush();
-        }
+    public void clearScreen(){
+        System.out.print("\033[H\033[2J");
     }
-    public void hideCursor(String os){
-        if (os.equals("Linux")){
-            System.out.println("\033[?25l");
-        }
-        else{
-            System.out.println("\33[?25l");
-        }
+    public void hideCursor(){
+        System.out.println("\033[?25l");
+
     }
 }
