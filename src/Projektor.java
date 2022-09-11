@@ -36,21 +36,18 @@ public class Projektor {
         myFooter.displayFooter(footer);
         System.out.println("\033[?25h");
         String inputOne = input.nextLine();
-        switch (inputOne){
-            case "b":
-                break;
-            default:
-                System.out.println("Enter description of your task");
-                String inputTwo= input.nextLine();
 
-                Task myTask=new Task(counter,inputOne,inputTwo);
+        System.out.println("Enter description of your task");
+        String inputTwo= input.nextLine();
+        System.out.println("Enter deadline date in following format dd/mm/yyyy");
+        String inputTree = input.nextLine();
+        Task myTask=new Task(counter,inputOne,inputTwo,inputTree);
 
-                myTaskList.addToList(myTask);
+        myTaskList.addToList(myTask);
 
 
-                serializationMethod(myTaskList);
+        serializationMethod(myTaskList);
 
-        }
 
 
 

@@ -2,6 +2,7 @@ import com.sun.management.DiagnosticCommandMBean;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,13 +18,22 @@ public class Task implements Serializable {
     List<Comment> comments = new ArrayList<Comment>();
     LocalDate creationDate;
     LocalTime creationTime;
-    public Task(int counter, String Title,String Description){
+    LocalDate ticketDeadLine;
+    public Task(int counter, String Title,String Description,String deadLine){
         taskTitle=Title;
         taskDescrition=Description;
         taskId=counter;
         taskState="New";
         creationDate=LocalDate.now();
         creationTime = LocalTime.now();
+        if(!deadLine.equals("")){
+            String[] splitedDeadline = deadLine.split("/");
+            ticketDeadLine=LocalDate.of(Integer.parseInt(splitedDeadline[2]),Integer.parseInt(splitedDeadline[1]),Integer.parseInt(splitedDeadline[0]));
+        }
+        else{
+
+        }
+
 
     }
 
@@ -46,8 +56,9 @@ public class Task implements Serializable {
     public void printTask(){
         System.out.println(taskId+" "+taskTitle);
         System.out.println();
-        System.out.println(taskDescrition);
+        System.out.println("Description: "+taskDescrition);
         System.out.println("Status" + " "+ taskState);
+        System.out.println("Due date: "+ticketDeadLine);
         for(int i=0;i<comments.size();i++){
             comments.get(i).displayTaskComments();
         }
