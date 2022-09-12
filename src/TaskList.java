@@ -10,9 +10,31 @@ public class TaskList implements Serializable {
         lista.add(taskToBeAdded);
     }
     public void printList(){
+        if(lista.size()>0){
+        int maxTitleLength=0;
+        for (int l=0;l<lista.size();l++){
+            if(lista.get(l).taskTitle.length()>maxTitleLength){
+                maxTitleLength=lista.get(l).taskTitle.length();
+            }
+            else{
+
+            }
+
+        }
+        String fullTableTitleText="                                                                                                                                                                             ";
+        StringBuffer textToDisplay=new StringBuffer(fullTableTitleText);
+        textToDisplay.insert(((maxTitleLength/2)-2),"Title");
+        String finalTextToDisplay = textToDisplay.substring(0,maxTitleLength-1);
         String footerInfo="Lista tasków";
-        for(int i =0;i<lista.size();i++){
-            lista.get(i).printTaskTitles();
+        int integerToPass=finalTextToDisplay.length();
+        System.out.println("| Task ID |Creation date | Creation time | "+finalTextToDisplay+"  | Status");
+        for(int i =0;i<lista.size();i++)
+        {
+            lista.get(i).printTaskTitles(maxTitleLength);
+
+        }
+        }
+        else{
 
         }
 

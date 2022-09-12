@@ -49,10 +49,15 @@ public class Task implements Serializable {
     }
 
 
-    public void printTaskTitles(){
+    public void printTaskTitles(int maxTaskTitleLength){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
-        System.out.println("| Task ID |Creation date | Creation time | Title  | Status");
-        System.out.println("|    "+taskId+"    |  "+creationDate+"  |    "+creationTime.format(dtf)+"   | "+taskTitle+ " | "+ taskState);
+        String tableTopasteInto = "                                                                                                                                                            ";
+        StringBuffer textToDisplay=new StringBuffer(tableTopasteInto);
+        textToDisplay.insert(((maxTaskTitleLength-taskTitle.length())),taskTitle);
+        String finalTextToDisplay = textToDisplay.substring(0,maxTaskTitleLength);
+        String footerInfo="Lista tasków";
+        int integerToPass=finalTextToDisplay.length();
+        System.out.println("|    "+taskId+"    |  "+creationDate+"  |    "+creationTime.format(dtf)+"   | "+finalTextToDisplay+ " | "+ taskState+" ");
 
     }
     public void printTask(){
