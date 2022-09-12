@@ -50,7 +50,9 @@ public class Task implements Serializable {
 
 
     public void printTaskTitles(){
-        System.out.println(creationDate+" "+creationTime+" "+taskId+" "+taskTitle+ " "+ taskState);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+        System.out.println("| Task ID |Creation date | Creation time | Title  | Status");
+        System.out.println("|    "+taskId+"    |  "+creationDate+"  |    "+creationTime.format(dtf)+"   | "+taskTitle+ " | "+ taskState);
 
     }
     public void printTask(){
