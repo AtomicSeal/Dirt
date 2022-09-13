@@ -53,8 +53,8 @@ public class Task implements Serializable {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
         String tableTopasteInto = "                                                                                                                                                            ";
         StringBuffer textToDisplay=new StringBuffer(tableTopasteInto);
-        textToDisplay.insert(((maxTaskTitleLength-taskTitle.length())),taskTitle);
-        String finalTextToDisplay = textToDisplay.substring(0,maxTaskTitleLength);
+        textToDisplay.insert((maxTaskTitleLength-taskTitle.length())/2,taskTitle);
+        String finalTextToDisplay = textToDisplay.substring(0,maxTaskTitleLength-1);
         String footerInfo="Lista tasków";
         int integerToPass=finalTextToDisplay.length();
         System.out.println("|    "+taskId+"    |  "+creationDate+"  |    "+creationTime.format(dtf)+"   | "+finalTextToDisplay+ " | "+ taskState+" ");

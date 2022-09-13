@@ -24,7 +24,7 @@ public class TaskList implements Serializable {
         String fullTableTitleText="                                                                                                                                                                             ";
         StringBuffer textToDisplay=new StringBuffer(fullTableTitleText);
         textToDisplay.insert(((maxTitleLength/2)-2),"Title");
-        String finalTextToDisplay = textToDisplay.substring(0,maxTitleLength-1);
+        String finalTextToDisplay = textToDisplay.substring(0,maxTitleLength-2);
         String footerInfo="Lista tasków";
         int integerToPass=finalTextToDisplay.length();
         System.out.println("| Task ID |Creation date | Creation time | "+finalTextToDisplay+"  | Status");
