@@ -1,7 +1,18 @@
+import java.io.File;
 import java.util.Scanner;
 
 public class Dirt {
     public static void main(String[] args){
+
+
+        File f = new File("serialSettings.ser");
+        if(f.exists() && !f.isDirectory()) {
+
+        }
+
+
+
+
         Projektor projektor = new Projektor();
         Scanner input=new Scanner(System.in);
 
@@ -35,7 +46,8 @@ public class Dirt {
                 case "d":
                     projektor.deleteTaskFromList();
                     break;
-
+                case "s":
+                    projektor.settingsScreen();
 
 
             }

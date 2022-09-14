@@ -150,4 +150,32 @@ public class Projektor {
         System.out.println("\033[?25l");
 
     }
+    public void settingsScreen(){
+        Settings settingsSetup = new Settings("a");
+
+        //Serializator
+        try {
+            FileOutputStream fileOut = new FileOutputStream("serialSettings.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(settingsSetup);
+            out.close();
+            fileOut.close();
+        }
+        catch (Exception e) {
+            System.out.println("Niepoprawny parametr, rozmiar tablicy to:");
+        }
+    }
+    public void loadSettings(){
+        try {
+            FileInputStream fileIn = new FileInputStream("serialSettings.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            myTaskdes = (TaskList) in.readObject();
+            in.close();
+            fileIn.close();
+            myTaskList=myTaskdes;
+        }
+        catch (Exception e) {
+            System.out.println("Niepoprawny parametr, rozmiar tablicy to:");
+        }
+    }
 }
