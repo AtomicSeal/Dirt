@@ -5,16 +5,19 @@ public class Dirt {
     public static void main(String[] args){
 
 
-        File f = new File("serialSettings.ser");
-        if(f.exists() && !f.isDirectory()) {
 
-        }
 
 
 
 
         Projektor projektor = new Projektor();
         Scanner input=new Scanner(System.in);
+
+        File f = new File("serialSettings.ser");
+        if(f.exists() && !f.isDirectory()) {
+            projektor.loadSettings();
+        }
+
 
         projektor.loadTaskList();
 

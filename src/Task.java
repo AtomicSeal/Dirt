@@ -49,15 +49,32 @@ public class Task implements Serializable {
     }
 
 
-    public void printTaskTitles(int maxTaskTitleLength){
+    public void printTaskTitles(int maxTaskTitleLength, String titleFormating){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
         String tableTopasteInto = "                                                                                                                                                            ";
         StringBuffer textToDisplay=new StringBuffer(tableTopasteInto);
-        textToDisplay.insert(0,taskTitle);
-        String finalTextToDisplay = textToDisplay.substring(0,maxTaskTitleLength-1);
+        String finalTextToDisplay;
+        switch (titleFormating){
+            case "Left":
+                textToDisplay.insert(0,taskTitle);
+                finalTextToDisplay = textToDisplay.substring(0,maxTaskTitleLength);
+                break;
+            case"Right":
+                textToDisplay.insert(maxTaskTitleLength-taskTitle.length(),taskTitle);
+                finalTextToDisplay = textToDisplay.substring(0,maxTaskTitleLength);
+                break;
+            case"Center":
+                textToDisplay.insert((maxTaskTitleLength-taskTitle.length())/2,taskTitle);
+                finalTextToDisplay = textToDisplay.substring(0,maxTaskTitleLength);
+                break;
+            default:
+                textToDisplay.insert(0,taskTitle);
+                finalTextToDisplay = textToDisplay.substring(0,maxTaskTitleLength);
+                break;
+        }
         String footerInfo="Lista tasków";
-        int integerToPass=finalTextToDisplay.length();
         System.out.println("|    "+taskId+"    |  "+creationDate+"  |    "+creationTime.format(dtf)+"   | "+finalTextToDisplay+ " | "+ taskState+" ");
+
 
     }
     public void printTask(){

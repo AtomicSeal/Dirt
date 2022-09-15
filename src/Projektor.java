@@ -9,6 +9,7 @@ public class Projektor {
     Scanner input=new Scanner(System.in);
     TaskList myTaskList = new TaskList();
 
+    Settings settingsSetup=new Settings("elo");
     TaskList myTaskdes=null;
     public void loadTaskList(){
         try {
@@ -57,7 +58,7 @@ public class Projektor {
         myHeader.printTitle(title);
         System.out.println();
 
-        myTaskList.printList();
+        myTaskList.printList(settingsSetup.titleFormating);
         System.out.println();
         myFooter.displayFooter("taskList");
 
@@ -66,7 +67,7 @@ public class Projektor {
 
 
         myHeader.printTitle(title);
-        myTaskList.printList();
+        myTaskList.printList(settingsSetup.titleFormating);
         System.out.println("Chose task you would like to edit");
 
         int x=Integer.parseInt(input.nextLine());
@@ -104,7 +105,7 @@ public class Projektor {
     }
     public void openTaskProject(String title,String footer){
         myHeader.printTitle(title);
-        myTaskList.printList();
+        myTaskList.printList(settingsSetup.titleFormating);
         System.out.println("Chose task you would like to open");
         myFooter.displayFooter(footer);
         int x=Integer.parseInt(input.nextLine());
@@ -151,7 +152,7 @@ public class Projektor {
 
     }
     public void settingsScreen(){
-        Settings settingsSetup = new Settings("a");
+        settingsSetup.titleFormating="Center";
 
         //Serializator
         try {
@@ -169,10 +170,10 @@ public class Projektor {
         try {
             FileInputStream fileIn = new FileInputStream("serialSettings.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            myTaskdes = (TaskList) in.readObject();
+            settingsSetup = (Settings) in.readObject();
             in.close();
             fileIn.close();
-            myTaskList=myTaskdes;
+
         }
         catch (Exception e) {
             System.out.println("Niepoprawny parametr, rozmiar tablicy to:");

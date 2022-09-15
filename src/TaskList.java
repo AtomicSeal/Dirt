@@ -9,7 +9,7 @@ public class TaskList implements Serializable {
     public void addToList(Task taskToBeAdded){
         lista.add(taskToBeAdded);
     }
-    public void printList(){
+    public void printList(String formating){
         if(lista.size()>0){
         int maxTitleLength=0;
         for (int l=0;l<lista.size();l++){
@@ -27,10 +27,10 @@ public class TaskList implements Serializable {
         String finalTextToDisplay = textToDisplay.substring(0,maxTitleLength-2);
         String footerInfo="Lista tasków";
         int integerToPass=finalTextToDisplay.length();
-        System.out.println("| Task ID |Creation date | Creation time | "+finalTextToDisplay+"  | Status");
+        System.out.println("| Task ID |Creation date | Creation time | "+finalTextToDisplay+"   | Status");
         for(int i =0;i<lista.size();i++)
         {
-            lista.get(i).printTaskTitles(maxTitleLength);
+            lista.get(i).printTaskTitles(maxTitleLength, formating);
 
         }
         }
