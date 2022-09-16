@@ -3,13 +3,13 @@ public class Footer {
         System.out.println();
         switch (footerToDisplay){
             case "mainMenu":
-                System.out.println("a:new task   e:edit task   l:list tasks");
+                System.out.println("a:new task   e:edit task   l:list tasks     ");
                 break;
             case "taskCreation":
                 System.out.println("b: back");
                 break;
             case "taskList":
-                System.out.println("a:new task   e:edit task   l:list tasks   o: open task  q: quit prgram  ");
+                System.out.println("a:new task   e:edit task   l:list tasks   o: open task  q: quit prgram  s:settings ");
                 break;
             case "editTask":
                 System.out.println("a: addComment   s: Switch state");

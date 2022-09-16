@@ -152,7 +152,23 @@ public class Projektor {
 
     }
     public void settingsScreen(){
-        settingsSetup.titleFormating="Center";
+        System.out.println("Chose title formating you would like to use");
+        System.out.println("Chose: a ,if you want your task titles aligned to left");
+        System.out.println("Chose: b ,if you want your task titles aligned to center");
+        System.out.println("Chose: c ,if you want your task titles aligned to right");
+        String aligmentString=input.nextLine();
+        switch(aligmentString){
+            case "a":
+                settingsSetup.titleFormating="Left";
+                break;
+            case "b":
+                settingsSetup.titleFormating="Center";
+                break;
+            case "c":
+                settingsSetup.titleFormating="Right";
+                break;
+        }
+
 
         //Serializator
         try {
